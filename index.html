@@ -17,26 +17,28 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
   <script src="https://d3js.org/d3.v4.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Allerta+Stencil|Cabin+Sketch|Josefin+Slab" rel="stylesheet">
 </head>
 
 <body id="body">
   <div id="top-section" class="container">
-    <h1 class="header-main">Environmental Hazards in NYC</h1>
+    <h1 id="header-main">Environmental Hazards in NYC</h1>
   </div>
   <div class="container-fluid">
     <div class="row no-gutter">
       <div class="col-sm-3"> 
         <div id="sidebar">
-          <h3>Data Layers</h3>
+
+          <h3 class="header-layers">About</h3>
+
+          <h3 class="header-layers">Data Layers <img id="loading" src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Gray_circles_rotate.gif" width="30px"></h3>
 
           <h4>Air Quality</h4>
           
-          <label class="switch">
-            <input type="checkbox">
-            <div class="slider round"></div>
-          </label>
+          <input id="check-bldgOil" type="checkbox">
           Buildings Burning Fuel Oil #4 and #6
-          <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#bldgOil"><span class="glyphicon glyphicon-info-sign"</span></button>
+          <span data-toggle="modal" data-target="#bldgOil" class="glyphicon glyphicon-info-sign"></span>
           <!-- Modal container -->
           <div class="modal fade" id="bldgOil" role="dialog">
             <div class="modal-dialog">            
@@ -56,14 +58,34 @@
             </div>
           </div>
 
+          <h4>Water Quality</h4>
+
+          <input id="check-cso" type="checkbox">
+          Combined Sewer Outfalls
+          <span data-toggle="modal" data-target="#cso" class="glyphicon glyphicon-info-sign"></span>
+          <!-- Modal container -->
+          <div class="modal fade" id="cso" role="dialog">
+            <div class="modal-dialog">            
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Combined Sewer Overflow (CSO) Outfalls</h4>
+                </div>
+                <div class="modal-body">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/CSO_diagram_US_EPA.jpg" width="100%">
+                  <p>"An E-Designation is a NYC zoning map designation that indicates the presence of an environmental requirement pertaining to potential Hazardous Materials Contamination, Window/Wall Noise Attenuation, or Air Quality impacts on a particular tax lot."<br>- <a href="http://www.nyc.gov/html/oer/html/e-designation/about.shtml">NYC Office of Environmental Remediation</a><p>
+                  <p>This dataset captures all tax lots with an E-Designation. Data was last updated September 2016. Data Source: <a href="http://www1.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page">MapPLUTO</a></p>
+                </div>
+              </div>              
+            </div>
+          </div>
+
           <h4>Contaminated Sites</h4>
 
-          <label class="switch">
-            <input type="checkbox">
-            <div class="slider round"></div>
-          </label>
+          <input id="check-eDesig" type="checkbox">
           E-Designation Sites
-          <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#eDesig"><span class="glyphicon glyphicon-info-sign"</span></button>
+          <span data-toggle="modal" data-target="#eDesig" class="glyphicon glyphicon-info-sign"></span>
           <!-- Modal container -->
           <div class="modal fade" id="eDesig" role="dialog">
             <div class="modal-dialog">            
@@ -83,36 +105,18 @@
           </div>
 
           <h4>Solid Waste</h4>
+          <input id="" type="checkbox">
+
+          <h4>Chemical Storage and Spills</h4>
+          <input id="" type="checkbox">
 
           <h4>Recent 311 Complaints</h4>
-
-          <h4>Water Quality</h4>
-
-          <label class="switch">
-            <input type="checkbox">
-            <div class="slider round"></div>
-          </label>
-          Combined Sewer Outfalls
-          <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#cso"><span class="glyphicon glyphicon-info-sign"</span></button>
-          <!-- Modal container -->
-          <div class="modal fade" id="cso" role="dialog">
-            <div class="modal-dialog">            
-              <!-- Modal content-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Combined Sewer Overflow (CSO) Outfalls</h4>
-                </div>
-                <div class="modal-body">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/CSO_diagram_US_EPA.jpg" width="100%">
-                  <p>"An E-Designation is a NYC zoning map designation that indicates the presence of an environmental requirement pertaining to potential Hazardous Materials Contamination, Window/Wall Noise Attenuation, or Air Quality impacts on a particular tax lot."<br>- <a href="http://www.nyc.gov/html/oer/html/e-designation/about.shtml">NYC Office of Environmental Remediation</a><p>
-                  <p>This dataset captures all tax lots with an E-Designation. Data was last updated September 2016. Data Source: <a href="http://www1.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page">MapPLUTO</a></p>
-                </div>
-              </div>              
-            </div>
-          </div>
+          <input id="" type="checkbox">
 
           <h4>Floodplains</h4>
+          <input id="" type="checkbox">
+
+          <h5><a href="#">What else do you want to see?</a></h5>
 
         </div>
       </div>

@@ -1,10 +1,23 @@
 #body {
   background-color: #CDD2D4;
 }
-.header-main {
+
+#header-main {
   text-align: center;
-/*  background-color: #CDD2D4;*/
-/*  width: 550px;*/
+  font-family: 'Cabin Sketch', cursive;
+  font-size: 58px;
+  margin-top: 12px;
+}
+
+.modal-title {
+  font-family: 'Cabin Sketch', cursive;
+  font-size: 24px;
+}
+
+.header-layers {
+  font-family: 'Cabin Sketch', cursive;
+  font-size: 36px;
+  margin-top: 12px;
 }
 
 .row.no-gutter > [class*='col-'] {
@@ -28,20 +41,22 @@
   height: 800px;
   width: 100%;
   display: inline-block;
-  margin-left: 8px;
   outline-style: solid;
-  outline-width: 1px;
+  outline-width: 0.5px;
   outline-color: #F5F5F3;
 }
 
 #sidebar {
   display: inline-block;
-  padding: 15px;
-  outline-style: solid;
-  outline-width: 1px;
-  outline-color: #F5F5F3;
+  padding: 25px;
   height: 800px;
   width: 100%;
   overflow: auto;
-  margin-right: 8px;
+  outline-style: solid;
+  outline-width: 0.5px;
+  outline-color: #F5F5F3;
+}
+
+.glyphicon {
+  float: right; 
 }
