@@ -7,17 +7,21 @@
   font-family: 'Cabin Sketch', cursive;
   font-size: 58px;
   margin-top: 12px;
+  color: black;
 }
 
 .modal-title {
   font-family: 'Cabin Sketch', cursive;
   font-size: 24px;
+  color: black;
 }
 
 .header-layers {
   font-family: 'Cabin Sketch', cursive;
   font-size: 36px;
-  margin-top: 12px;
+  color: black;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .row.no-gutter > [class*='col-'] {
