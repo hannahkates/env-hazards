@@ -6,21 +6,18 @@
   text-align: center;
   font-family: 'Cabin Sketch', cursive;
   font-size: 58px;
-  font-weight: bold;
   margin-top: 12px;
 }
 
 .modal-title {
   font-family: 'Cabin Sketch', cursive;
   font-size: 24px;
-  font-weight: bold;
 }
 
 .header-layers {
   font-family: 'Cabin Sketch', cursive;
   font-size: 36px;
   margin-top: 12px;
-  font-weight: bold;
 }
 
 .row.no-gutter > [class*='col-'] {
