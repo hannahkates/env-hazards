@@ -19,7 +19,7 @@ $(function() {
     if (this.checked) {
       bldgOilGet();
     } else {
-      console.log('not checked');
+      map.removeLayer(bldgOilLayer);
     }
   })
 
@@ -35,10 +35,11 @@ $(function() {
     if (this.checked) {
       csoGet();
     } else {
-      console.log('not checked');
+      map.removeLayer(csoLayer);
     }
   })
 
+  var bldgOilLayer;
   // Adding fuel oil building data
   var bldgOilGet = function() {
     loading.show();
@@ -62,7 +63,8 @@ $(function() {
                 opacity: 1,
                 fillOpacity: getStyle(d.primary_fuel)[1]
             };
-            return L.circleMarker(latlng, geojsonMarkerOptions);
+            bldgOilLayer = L.circleMarker(latlng, geojsonMarkerOptions)
+            return bldgOilLayer;
         },
         onEachFeature: function(feature, layer) {
             var d = feature.properties;   
@@ -77,13 +79,10 @@ $(function() {
     });
   }
 
-  // Adding 311 complaints data
-  // var siteURL = 'https://data.cityofnewyork.us/resource/fhrw-4uyv.json?agency=DEP&$limit=5000&format=geojson';
-
   // Adding E-Designation Properties
   var eDesigGet = function () {
     loading.show();
-    var eDesigURL = 'http://services5.arcgis.com/GfwWNkhOj9bNBqoJ/arcgis/rest/services/MAPPLUTO/FeatureServer/0/query?where=EDesigNum%20IS%20NOT%20NULL&outFields=Address,EDesigNum&outSR=4326&f=geojson#features/3/properties'
+    var eDesigURL = 'https://services5.arcgis.com/GfwWNkhOj9bNBqoJ/arcgis/rest/services/MAPPLUTO/FeatureServer/0/query?where=EDesigNum%20IS%20NOT%20NULL&outFields=Address,EDesigNum&outSR=4326&f=geojson#features/3/properties'
     $.getJSON(eDesigURL, function(sitePoint) {
       L.geoJson(sitePoint, {
         pointToLayer: function (feature, latlng) {
@@ -107,6 +106,7 @@ $(function() {
   }
 
   // Adding CSO Outfall Locations
+  var csoLayer;
   var csoGet = function() {
     loading.show();
     var csoURL = 'https://data.ny.gov/resource/5d4q-pk7d.json?dec_region=2'
@@ -121,8 +121,8 @@ $(function() {
               opacity: 1,
               fillOpacity: .9
         };
-        L.circleMarker( [data[i].latitude, data[i].longtitude], geojsonMarkerOptions )
-        .bindPopup(
+        csoLayer = L.circleMarker( [data[i].latitude, data[i].longtitude], geojsonMarkerOptions );
+        csoLayer.bindPopup(
           data[i].facility_name
         )
         .addTo(map);
@@ -130,5 +130,9 @@ $(function() {
       }
     });
   }
+
+  // Adding 311 complaints data
+  // var siteURL = 'https://data.cityofnewyork.us/resource/fhrw-4uyv.json?agency=DEP&$limit=5000&format=geojson';
+
 
 })
