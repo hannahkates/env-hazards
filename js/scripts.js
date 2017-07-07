@@ -27,15 +27,23 @@ $(function() {
     if (this.checked) {
       eDesigGet();
     } else {
-      console.log('not checked');
+      map.removeLayer(eDesigLayer);
     }
   })
 
   $('#check-cso').change(function(e){
     if (this.checked) {
       csoGet();
-    } else {
+    }  else {
       map.removeLayer(csoLayer);
+    }
+  })
+
+  $('#check-three').change(function(e){
+    if (this.checked) {
+      threeGet();
+    }  else {
+      map.removeLayer(threeLayer);
     }
   })
 
@@ -52,7 +60,7 @@ $(function() {
     };
 
     $.getJSON(bldgOilURL, function(sitePoint) {
-      L.geoJson(sitePoint, {
+      bldgOilLayer = L.geoJson(sitePoint, {
         pointToLayer: function (feature, latlng) {
             var d = feature.properties; 
             var geojsonMarkerOptions = {
@@ -63,8 +71,7 @@ $(function() {
                 opacity: 1,
                 fillOpacity: getStyle(d.primary_fuel)[1]
             };
-            bldgOilLayer = L.circleMarker(latlng, geojsonMarkerOptions)
-            return bldgOilLayer;
+            return L.circleMarker(latlng, geojsonMarkerOptions);
         },
         onEachFeature: function(feature, layer) {
             var d = feature.properties;   
@@ -74,17 +81,19 @@ $(function() {
               + 'Owner: ' + d.owner;
             layer.bindPopup(popupText);
           }
-      }).addTo(map);
+      })
+      bldgOilLayer.addTo(map);
       loading.hide();
     });
   }
 
   // Adding E-Designation Properties
+  var eDesigLayer;
   var eDesigGet = function () {
     loading.show();
-    var eDesigURL = 'https://services5.arcgis.com/GfwWNkhOj9bNBqoJ/arcgis/rest/services/MAPPLUTO/FeatureServer/0/query?where=EDesigNum%20IS%20NOT%20NULL&outFields=Address,EDesigNum&outSR=4326&f=geojson#features/3/properties'
+    var eDesigURL = 'https://services5.arcgis.com/GfwWNkhOj9bNBqoJ/arcgis/rest/services/MAPPLUTO/FeatureServer/0/query?where=EDesigNum%20IS%20NOT%20NULL&outFields=Address,EDesigNum&outSR=4326&f=geojson#features/3/properties';
     $.getJSON(eDesigURL, function(sitePoint) {
-      L.geoJson(sitePoint, {
+      eDesigLayer = L.geoJson(sitePoint, {
         pointToLayer: function (feature, latlng) {
             var d = feature.properties; 
             var geojsonMarkerOptions = {
@@ -100,16 +109,17 @@ $(function() {
               + 'E-Designation Number: ' + d.EDesigNum;
             layer.bindPopup(popupText);
           }
-      }).addTo(map);
+      })
+      eDesigLayer.addTo(map);
       loading.hide();
     });
   }
 
   // Adding CSO Outfall Locations
-  var csoLayer;
+  var csoLayer = L.layerGroup([]);
   var csoGet = function() {
     loading.show();
-    var csoURL = 'https://data.ny.gov/resource/5d4q-pk7d.json?dec_region=2'
+    var csoURL = 'https://data.ny.gov/resource/5d4q-pk7d.json?dec_region=2';
     $.getJSON(csoURL, function(data){
       for(var i=0; i<data.length; i++) {
         var marker = data[i];
@@ -121,18 +131,66 @@ $(function() {
               opacity: 1,
               fillOpacity: .9
         };
-        csoLayer = L.circleMarker( [data[i].latitude, data[i].longtitude], geojsonMarkerOptions );
-        csoLayer.bindPopup(
+        var csoPoint = L.circleMarker( [data[i].latitude, data[i].longtitude], geojsonMarkerOptions ).bindPopup(
           data[i].facility_name
-        )
-        .addTo(map);
-        loading.hide();
+        );
+        csoLayer.addLayer(csoPoint);
       }
+      csoLayer.addTo(map);
+      loading.hide();
     });
   }
 
   // Adding 311 complaints data
-  // var siteURL = 'https://data.cityofnewyork.us/resource/fhrw-4uyv.json?agency=DEP&$limit=5000&format=geojson';
+  var threeLayer = L.layerGroup([]);
+  var threeGet = function() {
+    loading.show();
+    var threeURL = 'https://data.cityofnewyork.us/resource/fhrw-4uyv.json?agency=DEP&$limit=800';
+    $.getJSON(threeURL, function(data){
+      for(var i=0; i<data.length; i++) {
+        var marker = data[i];
+        var geojsonMarkerOptions = {
+              radius: 4,
+              fillColor: '#9b42f4',
+              color: "#000",
+              weight: 1,
+              opacity: 1,
+              fillOpacity: .9
+        };
+        var threePoint = L.circleMarker( [data[i].latitude, data[i].longitude], geojsonMarkerOptions ).bindPopup(
+          data[i].descriptor
+        );
+        threeLayer.addLayer(threePoint);
+      }
+      threeLayer.addTo(map);
+      loading.hide();
+    });
+  }
 
+  // // Bulk chemical and oil storage
+  // var bulkLayer = L.layerGroup([]);
+  // var bulkGet = function() {
+  //   loading.show();
+  //   var bulkURL = 'https://data.ny.gov/resource/2324-ueu8.json';
+  //   $.getJSON(bulkURL, function(data){
+  //     for(var i=0; i<data.length; i++) {
+  //       var marker = data[i];
+  //       var geojsonMarkerOptions = {
+  //             radius: 4,
+  //             fillColor: '#9b42f4',
+  //             color: "#000",
+  //             weight: 1,
+  //             opacity: 1,
+  //             fillOpacity: .9
+  //       };
+  //       var bulkPoint = L.circleMarker( [data[i].latitude, data[i].longitude], geojsonMarkerOptions ).bindPopup(
+  //         data[i].descriptor
+  //       );
+  //       bulkLayer.addLayer(bulkPoint);
+  //     }
+  //     bulkLayer.addTo(map);
+  //     loading.hide();
+  //   });
+  // }
 
 })
