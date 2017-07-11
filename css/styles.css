@@ -39,15 +39,16 @@
 
 #top-section {
   height: 80px;
+  outline-style: solid;
+  outline-width: 0.5px;
+  outline-color: #F5F5F3;
+  width: 100%;
 }
 
 #mapContainer {
   height: 800px;
   width: 100%;
   display: inline-block;
-  outline-style: solid;
-  outline-width: 0.5px;
-  outline-color: #F5F5F3;
 }
 
 #sidebar {
@@ -56,9 +57,6 @@
   height: 800px;
   width: 100%;
   overflow: auto;
-  outline-style: solid;
-  outline-width: 0.5px;
-  outline-color: #F5F5F3;
 }
 
 .glyphicon {
@@ -67,4 +65,30 @@
 
 #github {
   float: right; 
+}
+
+.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.9);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+.info h4 {
+    margin: 0 0 5px;
+    color: #777;
+}
+
+.legend {
+    line-height: 25px;
+    color: black;
+}
+.legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.9;
+    border-radius: 25px;
 }

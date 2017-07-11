@@ -19,6 +19,10 @@
   <script src="https://d3js.org/d3.v4.min.js"></script>
 
   <link href="https://fonts.googleapis.com/css?family=Allerta+Stencil|Cabin+Sketch|Josefin+Slab" rel="stylesheet">
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+  <script src="js/scripts.js"></script>
 </head>
 
 <body id="body">
@@ -26,7 +30,7 @@
     <h1 id="header-main">Environmental Hazards in NYC</h1>
   </div>
   <div class="container-fluid">
-    <div class="row no-gutter">
+    <div class="row no-gutter"> 
       <div class="col-sm-3"> 
         <div id="sidebar">
 
@@ -39,7 +43,7 @@
           <h4>Air Quality</h4>
           
           <div>
-            <input id="check-bldgOil" type="checkbox">
+            <input id="check-bldgOil" type="checkbox" data-layer-name="bldgOil">
             <span data-toggle="modal" data-target="#bldgOil" class="glyphicon glyphicon-info-sign"></span>
             Buildings Burning Fuel Oil #4 and #6
           </div>
@@ -65,7 +69,7 @@
           <h4>Water Quality</h4>
 
           <div>
-            <input id="check-cso" type="checkbox">
+            <input id="check-cso" type="checkbox" data-layer-name="cso">
             <span data-toggle="modal" data-target="#cso" class="glyphicon glyphicon-info-sign"></span>
             Combined Sewer Outfalls
           </div>
@@ -89,7 +93,7 @@
           <div>
             <input id="" type="checkbox">
             <span data-toggle="modal" data-target="" class="glyphicon glyphicon-info-sign"></span>
-            (Coming soon) Wastewater Treatment Plant Discharge Locations
+            ( Soon! ) Wastewater Treatment Plant Discharge Locations
           </div>
 
 
@@ -98,21 +102,21 @@
           <div>
             <input id="" type="checkbox">
             <span data-toggle="modal" data-target="" class="glyphicon glyphicon-info-sign"></span>
-            (Coming soon) Brownfields
+            ( Soon! ) Brownfields
           </div>
           <div>
             <input id="" type="checkbox">
             <span data-toggle="modal" data-target="" class="glyphicon glyphicon-info-sign"></span>
-            (Coming soon) Chemical Remediation Sites
+            ( Soon! ) Chemical Remediation Sites
           </div> 
           <div>
-            <input id="check-eDesig" type="checkbox">
+            <input id="check-eDesig" type="checkbox" data-layer-name="eDesig">
             <span data-toggle="modal" data-target="#eDesig" class="glyphicon glyphicon-info-sign"></span>
             E-Designation Sites
           </div>
           <!-- Modal container -->
           <div class="modal fade" id="eDesig" role="dialog">
-            <div class="modal-dialog">            
+            <div class="modal-dialog">     
               <!-- Modal content-->
               <div class="modal-content">
                 <div class="modal-header">
@@ -133,19 +137,19 @@
 
           <div>
             <input id="" type="checkbox">
-            (Coming soon) Large Oil Spills
+            ( Soon! ) Large Oil Spills
           </div>
           <div>
             <input id="" type="checkbox">
-            (Coming soon) Oil and Chemical Spills
+            ( Soon! ) Oil and Chemical Spills
           </div>
           <div>
             <input id="" type="checkbox">
-            (Coming soon) Bulk Chemical and Oil Storage
+            ( Soon! ) Bulk Chemical and Oil Storage
           </div>
           <div>
             <input id="" type="checkbox">
-            (Coming soon) Toxics Release Inventory
+            ( Soon! ) Toxics Release Inventory
           </div>
 
 
@@ -153,22 +157,22 @@
 
           <div>
             <input id="" type="checkbox">
-            (Coming soon) Waste Processing
+            ( Soon! ) Waste Processing
           </div>
           <div>
             <input id="" type="checkbox">
-            (Coming soon) Waste Carter Sites
+            ( Soon! ) Waste Carter Sites
           </div>
           <div>
             <input id="" type="checkbox">
-            (Coming soon) Waste Transfer Stations
+            ( Soon! ) Waste Transfer Stations
           </div>
 
 
           <h4>Recent 311 Complaints</h4>
 
           <div>
-            <input id="check-three" type="checkbox">
+            <input id="check-three" type="checkbox" data-layer-name="three">
             <span data-toggle="modal" data-target="" class="glyphicon glyphicon-info-sign"></span>
             Complaints to DEP - Most recent 800
           </div>
@@ -178,7 +182,7 @@
 
           <div>
             <input id="" type="checkbox">
-            (Coming soon) 2020s Sea Level Rise 100-yr Floodplain
+            ( Soon! ) 2020s Sea Level Rise 100-yr Floodplain
           </div>
 
           <h5><a href="#">What else do you want to see?</a></h5>
@@ -191,9 +195,5 @@
       </div>
     </div>
   </div>
-
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-  <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
-  <script src="js/scripts.js"></script>
 </body>
 </html>

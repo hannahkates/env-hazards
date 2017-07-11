@@ -15,41 +15,71 @@ $(function() {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>'
   }).addTo(map);
 
-  $('#check-bldgOil').change(function(e){
-    if (this.checked) {
-      bldgOilGet();
-    } else {
-      map.removeLayer(bldgOilLayer);
-    }
-  })
 
-  $('#check-eDesig').change(function(e){
-    if (this.checked) {
-      eDesigGet();
-    } else {
-      map.removeLayer(eDesigLayer);
-    }
-  })
+  var mapFunctions = {
+    csoGet: csoGet,
+    csoRemove: csoRemove,
 
-  $('#check-cso').change(function(e){
+    bldgOilGet: bldgOilGet,
+    bldgOilRemove: bldgOilRemove,
+
+    threeGet: threeGet,
+    threeRemove: threeRemove,
+
+    eDesigGet: eDesigGet,
+    eDesigRemove: eDesigRemove
+  }
+
+  function mapLayerClickFn(e) {
+    var layerName = $(this).data('layer-name');
+    // console.log(layerName);
+
     if (this.checked) {
-      csoGet();
+      mapFunctions[layerName + 'Get']();
     }  else {
-      map.removeLayer(csoLayer);
+      mapFunctions[layerName + 'Remove']();
     }
-  })
+    $('.legend').remove();
+    generateLegend();
+  }
 
-  $('#check-three').change(function(e){
-    if (this.checked) {
-      threeGet();
-    }  else {
-      map.removeLayer(threeLayer);
-    }
-  })
+  $('#check-cso').change(mapLayerClickFn)
+  $('#check-bldgOil').change(mapLayerClickFn)
+  $('#check-eDesig').change(mapLayerClickFn)
+  $('#check-three').change(mapLayerClickFn)
+
+
+  var generateLegend = function() {
+    var legend = L.control({position: 'topright'});
+    legend.onAdd = function (map) {
+      function getColor(d) {
+      return d > 1000 ? '#800026' :
+        d > 500  ? '#BD0026' :
+        d > 200  ? '#E31A1C' :
+        d > 100  ? '#FC4E2A' :
+        d > 50   ? '#FD8D3C' :
+        d > 20   ? '#FEB24C' :
+        d > 10   ? '#FED976' : '#FFEDA0';
+      }
+      var div = L.DomUtil.create('div', 'info legend'),
+        grades = [0, 10, 20, 50, 100, 200, 500, 1000],
+        labels = [];
+      console.log(div);
+      // loop through our density intervals and generate a label with a colored square for each interval
+      for (var i = 0; i < grades.length; i++) {
+          div.innerHTML +=
+            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+      }
+      return div;
+    };
+    legend.addTo(map);
+  }
+
 
   var bldgOilLayer;
   // Adding fuel oil building data
-  var bldgOilGet = function() {
+  function bldgOilGet() {
     loading.show();
     var bldgOilURL = 'https://hbk254.carto.com/api/v2/sql?q=SELECT * FROM clean_heat_data&format=geojson';
 
@@ -86,10 +116,13 @@ $(function() {
       loading.hide();
     });
   }
+  function bldgOilRemove() {
+    map.removeLayer(bldgOilLayer);
+  }
 
   // Adding E-Designation Properties
   var eDesigLayer;
-  var eDesigGet = function () {
+  function eDesigGet() {
     loading.show();
     var eDesigURL = 'https://services5.arcgis.com/GfwWNkhOj9bNBqoJ/arcgis/rest/services/MAPPLUTO/FeatureServer/0/query?where=EDesigNum%20IS%20NOT%20NULL&outFields=Address,EDesigNum&outSR=4326&f=geojson#features/3/properties';
     $.getJSON(eDesigURL, function(sitePoint) {
@@ -114,10 +147,13 @@ $(function() {
       loading.hide();
     });
   }
+  function eDesigRemove() {
+    map.removeLayer(eDesigLayer);
+  }
 
   // Adding CSO Outfall Locations
   var csoLayer = L.layerGroup([]);
-  var csoGet = function() {
+  function csoGet() {
     loading.show();
     var csoURL = 'https://data.ny.gov/resource/5d4q-pk7d.json?dec_region=2';
     $.getJSON(csoURL, function(data){
@@ -140,12 +176,15 @@ $(function() {
       loading.hide();
     });
   }
+  function csoRemove() {
+    map.removeLayer(csoLayer);
+  }
 
   // Adding 311 complaints data
   var threeLayer = L.layerGroup([]);
-  var threeGet = function() {
+  function threeGet() {
     loading.show();
-    var threeURL = 'https://data.cityofnewyork.us/resource/fhrw-4uyv.json?agency=DEP&$limit=800';
+    var threeURL = "https://data.cityofnewyork.us/resource/fhrw-4uyv.json?agency=DEP&$limit=800&$where=complaint_type <> 'Noise' AND latitude>0";
     $.getJSON(threeURL, function(data){
       for(var i=0; i<data.length; i++) {
         var marker = data[i];
@@ -166,10 +205,13 @@ $(function() {
       loading.hide();
     });
   }
+  function threeRemove() {
+    map.removeLayer(threeLayer);
+  }
 
   // // Bulk chemical and oil storage
   // var bulkLayer = L.layerGroup([]);
-  // var bulkGet = function() {
+  // function bulkGet() {
   //   loading.show();
   //   var bulkURL = 'https://data.ny.gov/resource/2324-ueu8.json';
   //   $.getJSON(bulkURL, function(data){
@@ -191,6 +233,9 @@ $(function() {
   //     bulkLayer.addTo(map);
   //     loading.hide();
   //   });
+  // }
+  // function bulkRemove() {
+  //   map.removeLayer(bulkLayer);
   // }
 
 })
