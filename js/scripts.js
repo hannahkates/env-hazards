@@ -16,6 +16,7 @@ $(function() {
   }).addTo(map);
 
 
+
   var mapFunctions = {
     csoGet: csoGet,
     csoRemove: csoRemove,
@@ -28,6 +29,98 @@ $(function() {
 
     eDesigGet: eDesigGet,
     eDesigRemove: eDesigRemove
+  }
+
+  var layers = {
+    bldgOil: {
+      label: 'Buildings Burning Fuel Oil #4 and #6',
+      url: '',
+      type: 'geo',
+      layerName: '',
+      markerStyle: {
+        radius: 4,
+        fillColor: 'black',
+        color: "#000",
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 0.7
+      },
+      legendStyle: {
+
+      },
+      popupContent: {
+
+      },
+      modalContent: {
+
+      }
+    },
+    cso: {
+      label: '',
+      url: '',
+      type: 'nonGeo',
+      layerName: '',
+      markerStyle: {
+        radius: 4,
+        fillColor: '#FFA500',
+        color: "#000",
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 0.9
+      },
+      legendStyle: {
+
+      },
+      popupContent: {
+
+      },
+      modalContent: {
+
+      }
+    },
+    eDesig: {
+      label: '',
+      url: '',
+      type: 'geo',
+      layerName: '',
+      markerStyle: {
+        color: '#4f1111',
+        weight: 2,
+        opacity: 1
+      },
+      legendStyle: {
+
+      },
+      popupContent: {
+
+      },
+      modalContent: {
+
+      }
+    },
+    three: {
+      label: '',
+      url: '',
+      type: 'nonGeo',
+      layerName: '',
+      markerStyle: {
+        radius: 4,
+        fillColor: '#9b42f4',
+        color: "#000",
+        weight: 1,
+        opacity: 1,
+        fillOpacity: .9
+      },
+      legendStyle: {
+
+      },
+      popupContent: {
+
+      },
+      modalContent: {
+
+      }
+    }
   }
 
   function mapLayerClickFn(e) {
@@ -62,11 +155,10 @@ $(function() {
         d > 10   ? '#FED976' : '#FFEDA0';
       }
       var div = L.DomUtil.create('div', 'info legend'),
-        grades = [0, 10, 20, 50, 100, 200, 500, 1000],
+        grades = layers,
         labels = [];
-      console.log(div);
       // loop through our density intervals and generate a label with a colored square for each interval
-      for (var i = 0; i < grades.length; i++) {
+      for (var i = 0; i < layers.length; i++) {
           div.innerHTML +=
             '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
             grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
@@ -76,6 +168,27 @@ $(function() {
     legend.addTo(map);
   }
 
+  // Adding CSO Outfall Locations
+  var csoLayer = L.layerGroup([]);
+  function csoGet() {
+    loading.show();
+    var csoURL = 'https://data.ny.gov/resource/5d4q-pk7d.json?dec_region=2';
+    $.getJSON(csoURL, function(data){
+      for(var i=0; i<data.length; i++) {
+        var marker = data[i];
+        var geojsonMarkerOptions  = layers['cso'].markerStyle;
+        var csoPoint = L.circleMarker( [data[i].latitude, data[i].longtitude], geojsonMarkerOptions ).bindPopup(
+          data[i].facility_name
+        );
+        csoLayer.addLayer(csoPoint);
+      }
+      csoLayer.addTo(map);
+      loading.hide();
+    });
+  }
+  function csoRemove() {
+    map.removeLayer(csoLayer);
+  }
 
   var bldgOilLayer;
   // Adding fuel oil building data
@@ -83,24 +196,11 @@ $(function() {
     loading.show();
     var bldgOilURL = 'https://hbk254.carto.com/api/v2/sql?q=SELECT * FROM clean_heat_data&format=geojson';
 
-    // Defining color for each attribute
-    function getStyle(primary_fuel) {
-      return primary_fuel == '#4' ? ['black', 0.7] :
-      primary_fuel == '#6' ? ['#a80d29', .9] : ['#FFF', 0.7]
-    };
-
     $.getJSON(bldgOilURL, function(sitePoint) {
       bldgOilLayer = L.geoJson(sitePoint, {
         pointToLayer: function (feature, latlng) {
             var d = feature.properties; 
-            var geojsonMarkerOptions = {
-                radius: 4,
-                fillColor: getStyle(d.primary_fuel)[0],
-                color: "#000",
-                weight: 1,
-                opacity: 1,
-                fillOpacity: getStyle(d.primary_fuel)[1]
-            };
+            var geojsonMarkerOptions = layers['bldgOil'].markerStyle;
             return L.circleMarker(latlng, geojsonMarkerOptions);
         },
         onEachFeature: function(feature, layer) {
@@ -110,7 +210,7 @@ $(function() {
               + 'Estimated Retirement Year: ' + d.est_retirement_year + '<br />'  
               + 'Owner: ' + d.owner;
             layer.bindPopup(popupText);
-          }
+        }
       })
       bldgOilLayer.addTo(map);
       loading.hide();
@@ -127,15 +227,7 @@ $(function() {
     var eDesigURL = 'https://services5.arcgis.com/GfwWNkhOj9bNBqoJ/arcgis/rest/services/MAPPLUTO/FeatureServer/0/query?where=EDesigNum%20IS%20NOT%20NULL&outFields=Address,EDesigNum&outSR=4326&f=geojson#features/3/properties';
     $.getJSON(eDesigURL, function(sitePoint) {
       eDesigLayer = L.geoJson(sitePoint, {
-        pointToLayer: function (feature, latlng) {
-            var d = feature.properties; 
-            var geojsonMarkerOptions = {
-                color: '#1a7042',
-                weight: 1,
-                opacity: 1
-            };
-            return L.circleMarker(latlng, geojsonMarkerOptions);
-        },
+        style: layers['eDesig'].markerStyle,
         onEachFeature: function(feature, layer) {
             var d = feature.properties;   
             var popupText = d.Address + '<br />'
@@ -151,35 +243,6 @@ $(function() {
     map.removeLayer(eDesigLayer);
   }
 
-  // Adding CSO Outfall Locations
-  var csoLayer = L.layerGroup([]);
-  function csoGet() {
-    loading.show();
-    var csoURL = 'https://data.ny.gov/resource/5d4q-pk7d.json?dec_region=2';
-    $.getJSON(csoURL, function(data){
-      for(var i=0; i<data.length; i++) {
-        var marker = data[i];
-        var geojsonMarkerOptions = {
-              radius: 4,
-              fillColor: '#FFA500',
-              color: "#000",
-              weight: 1,
-              opacity: 1,
-              fillOpacity: .9
-        };
-        var csoPoint = L.circleMarker( [data[i].latitude, data[i].longtitude], geojsonMarkerOptions ).bindPopup(
-          data[i].facility_name
-        );
-        csoLayer.addLayer(csoPoint);
-      }
-      csoLayer.addTo(map);
-      loading.hide();
-    });
-  }
-  function csoRemove() {
-    map.removeLayer(csoLayer);
-  }
-
   // Adding 311 complaints data
   var threeLayer = L.layerGroup([]);
   function threeGet() {
@@ -188,14 +251,7 @@ $(function() {
     $.getJSON(threeURL, function(data){
       for(var i=0; i<data.length; i++) {
         var marker = data[i];
-        var geojsonMarkerOptions = {
-              radius: 4,
-              fillColor: '#9b42f4',
-              color: "#000",
-              weight: 1,
-              opacity: 1,
-              fillOpacity: .9
-        };
+        var geojsonMarkerOptions = layers['three'].markerStyle;
         var threePoint = L.circleMarker( [data[i].latitude, data[i].longitude], geojsonMarkerOptions ).bindPopup(
           data[i].descriptor
         );
@@ -208,34 +264,5 @@ $(function() {
   function threeRemove() {
     map.removeLayer(threeLayer);
   }
-
-  // // Bulk chemical and oil storage
-  // var bulkLayer = L.layerGroup([]);
-  // function bulkGet() {
-  //   loading.show();
-  //   var bulkURL = 'https://data.ny.gov/resource/2324-ueu8.json';
-  //   $.getJSON(bulkURL, function(data){
-  //     for(var i=0; i<data.length; i++) {
-  //       var marker = data[i];
-  //       var geojsonMarkerOptions = {
-  //             radius: 4,
-  //             fillColor: '#9b42f4',
-  //             color: "#000",
-  //             weight: 1,
-  //             opacity: 1,
-  //             fillOpacity: .9
-  //       };
-  //       var bulkPoint = L.circleMarker( [data[i].latitude, data[i].longitude], geojsonMarkerOptions ).bindPopup(
-  //         data[i].descriptor
-  //       );
-  //       bulkLayer.addLayer(bulkPoint);
-  //     }
-  //     bulkLayer.addTo(map);
-  //     loading.hide();
-  //   });
-  // }
-  // function bulkRemove() {
-  //   map.removeLayer(bulkLayer);
-  // }
 
 })
