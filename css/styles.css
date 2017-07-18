@@ -1,5 +1,9 @@
 #body {
-  background-color: #CDD2D4;
+/*  background-color: #FFFFFF;*/
+  background: #CDD2D4;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #CDD2D4, #ffffff);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #CDD2D4, #ffffff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  font-family: 'Open Sans', sans-serif;
 }
 
 #header-main {
@@ -20,7 +24,7 @@
   font-family: 'Cabin Sketch', cursive;
   font-size: 36px;
   color: black;
-  margin-top: 10px;
+  margin-top: 18px;
   margin-bottom: 10px;
 }
 
@@ -39,22 +43,25 @@
 
 #top-section {
   height: 80px;
-  outline-style: solid;
+  width: 100%;  
+  outline-color: #CDD2D4;
   outline-width: 0.5px;
-  outline-color: #F5F5F3;
-  width: 100%;
+  outline-style: solid;
 }
 
 #mapContainer {
-  height: 800px;
+  height: 500px;
   width: 100%;
   display: inline-block;
 }
 
 #sidebar {
   display: inline-block;
-  padding: 29px;
-  height: 800px;
+  padding-right: 29px;
+  padding-left: 29px;
+  padding-bottom: 29px;
+  padding-top: 8px;
+  height: 500px;
   width: 100%;
   overflow: auto;
 }
@@ -64,6 +71,10 @@
 }
 
 #github {
+  float: right; 
+}
+
+#loading {
   float: right; 
 }
 

@@ -15,12 +15,20 @@ var layers = {
     legendStyle: {
 
     },
-    popupContent: {
-
+    popupTemplate: 
+      `<h5>{{street_address}}</h5>
+      <h5>Fuel: {{primary_fuel}}</h5>
+      <h5>Estimated Retirement Year: {{est_retirement_year}} </h5>
+      <h5>Owner: {{owner}}</h5>`,
+    popupFields: {
+      street_address: 'street_address',
+      primary_fuel: 'primary_fuel',
+      est_retirement_year: 'est_retirement_year',
+      owner: 'owner'
     },
     divContent:
       `<div>
-        <input id="check-bldgOil" type="checkbox" data-layer-name="bldgOil">
+        <input type="checkbox" data-layer-name="bldgOil">
         <span class="circle" style:{background=#f00, width=200px, height=200px, border-radius=50%}></span>
         <span data-toggle="modal" data-target="#bldgOil" class="glyphicon glyphicon-info-sign"></span>
         Buildings Burning Fuel Oil #4 and #6
@@ -60,10 +68,15 @@ var layers = {
     legendStyle: {
 
     },
-    popupContent: ['Wastewater Treatment Catchment: ', 'facility_name'],
+    popupTemplate:
+      `<h5>Wastewater Treatment Catchment:</h5>
+      <h5>{{facility_name}}</h5>`,
+    popupFields: {
+      facility_name: 'facility_name'
+    },
     divContent:
       `<div>
-        <input id="check-cso" type="checkbox" data-layer-name="cso">
+        <input type="checkbox" data-layer-name="cso">
         <span data-toggle="modal" data-target="#cso" class="glyphicon glyphicon-info-sign"></span>
         Combined Sewer Outfalls
       </div>
@@ -96,12 +109,16 @@ var layers = {
     legendStyle: {
 
     },
-    popupContent: {
-
+    popupTemplate: 
+      `<h5>E-Designation Number:</h5>
+      <h5>{{EDesigNum}}</h5>`
+    ,
+    popupFields: {
+      EDesigNum: 'EDesigNum'
     },
     divContent:
       `<div>
-        <input id="check-eDesig" type="checkbox" data-layer-name="eDesig">
+        <input type="checkbox" data-layer-name="eDesig">
         <span data-toggle="modal" data-target="#eDesig" class="glyphicon glyphicon-info-sign"></span>
         E-Designation Sites
       </div>
@@ -139,14 +156,72 @@ var layers = {
     legendStyle: {
 
     },
-    popupContent: {
-
+    popupTemplate:
+      `<h5>311 Complaint Category:<h5>
+      <h5>{{descriptor}}</h5>`,
+    popupFields: {
+      descriptor: 'descriptor'
     },
     divContent:
       `<div>
-        <input id="check-three" type="checkbox" data-layer-name="three">
+        <input type="checkbox" data-layer-name="three">
         <span data-toggle="modal" data-target="" class="glyphicon glyphicon-info-sign"></span>
         Complaints to DEP - Most recent 800
       </div>`
   }
 }
+
+
+          // <div>
+          //   <input id="" type="checkbox">
+          //   <span data-toggle="modal" data-target="" class="glyphicon glyphicon-info-sign"></span>
+          //   ( Soon! ) Wastewater Treatment Plant Discharge Locations
+          // </div>
+
+          // <div>
+          //   <input id="" type="checkbox">
+          //   <span data-toggle="modal" data-target="" class="glyphicon glyphicon-info-sign"></span>
+          //   ( Soon! ) Brownfields
+          // </div>
+          // <div>
+          //   <input id="" type="checkbox">
+          //   <span data-toggle="modal" data-target="" class="glyphicon glyphicon-info-sign"></span>
+          //   ( Soon! ) Chemical Remediation Sites
+          // </div>
+         
+          // <div>
+          //   <input id="" type="checkbox">
+          //   ( Soon! ) Large Oil Spills
+          // </div>
+          // <div>
+          //   <input id="" type="checkbox">
+          //   ( Soon! ) Oil and Chemical Spills
+          // </div>
+          // <div>
+          //   <input id="" type="checkbox">
+          //   ( Soon! ) Bulk Chemical and Oil Storage
+          // </div>
+          // <div>
+          //   <input id="" type="checkbox">
+          //   ( Soon! ) Toxics Release Inventory
+          // </div>
+
+          // <div>
+          //   <input id="" type="checkbox">
+          //   ( Soon! ) Waste Processing
+          // </div>
+          // <div>
+          //   <input id="" type="checkbox">
+          //   ( Soon! ) Waste Carter Sites
+          // </div>
+          // <div>
+          //   <input id="" type="checkbox">
+          //   ( Soon! ) Waste Transfer Stations
+          // </div>
+
+          // <div>
+          //   <input id="" type="checkbox">
+          //   ( Soon! ) 2020s Sea Level Rise 100-yr Floodplain
+          // </div>
+
+

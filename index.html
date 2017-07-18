@@ -5,8 +5,8 @@
   <meta charset="utf-8">
 
   <title>Environmental Hazards in NYC</title>
-  <meta name="description" content="The HTML5 Herald">
-  <meta name="author" content="SitePoint">
+  <meta name="Environmental Hazards in NYC" content="Map of all environmental hazards in New York City">
+  <meta name="Hannah Kates" content="SitePoint">
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
   <link rel="stylesheet" href="css/styles.css" />
@@ -18,10 +18,12 @@
 
   <script src="https://d3js.org/d3.v4.min.js"></script>
 
-  <link href="https://fonts.googleapis.com/css?family=Allerta+Stencil|Cabin+Sketch|Josefin+Slab" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Cabin+Sketch" rel="stylesheet">
 
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js"></script>
 
   <script src="js/config.js"></script>
   <script src="js/scripts.js"></script>
@@ -42,86 +44,28 @@
 
           <h3 class="header-layers">Data Layers <img id="loading" src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Gray_circles_rotate.gif" width="30px"></h3>
 
-
-          <h4>Air Quality</h4>
+          <h4><b>Air Quality</b></h4>
           <div id="air"></div>
 
-          <h4>Water Quality</h4>
+          <h4><b>Water Quality</b></h4>
           <div id="water"></div>
 
-          <div>
-            <input id="" type="checkbox">
-            <span data-toggle="modal" data-target="" class="glyphicon glyphicon-info-sign"></span>
-            ( Soon! ) Wastewater Treatment Plant Discharge Locations
-          </div>
-
-
-          <h4>Contaminated Sites</h4>
+          <h4><b>Contaminated Sites</b></h4>
           <div id="contaminated"></div>
 
-          <div>
-            <input id="" type="checkbox">
-            <span data-toggle="modal" data-target="" class="glyphicon glyphicon-info-sign"></span>
-            ( Soon! ) Brownfields
-          </div>
-          <div>
-            <input id="" type="checkbox">
-            <span data-toggle="modal" data-target="" class="glyphicon glyphicon-info-sign"></span>
-            ( Soon! ) Chemical Remediation Sites
-          </div>
-
-
-          <h4>Chemical Storage and Spills</h4>
+          <h4><b>Chemical Storage and Spills</b></h4>
           <div id="spills"></div>
 
-          <div>
-            <input id="" type="checkbox">
-            ( Soon! ) Large Oil Spills
-          </div>
-          <div>
-            <input id="" type="checkbox">
-            ( Soon! ) Oil and Chemical Spills
-          </div>
-          <div>
-            <input id="" type="checkbox">
-            ( Soon! ) Bulk Chemical and Oil Storage
-          </div>
-          <div>
-            <input id="" type="checkbox">
-            ( Soon! ) Toxics Release Inventory
-          </div>
-
-
-          <h4>Solid Waste</h4>
+          <h4><b>Solid Waste</b></h4>
           <div id="solid"></div>
 
-          <div>
-            <input id="" type="checkbox">
-            ( Soon! ) Waste Processing
-          </div>
-          <div>
-            <input id="" type="checkbox">
-            ( Soon! ) Waste Carter Sites
-          </div>
-          <div>
-            <input id="" type="checkbox">
-            ( Soon! ) Waste Transfer Stations
-          </div>
-
-
-          <h4>Recent 311 Complaints</h4>
+          <h4><b>Recent 311 Complaints</b></h4>
           <div id="complaints"></div>
 
-
-          <h4>Floodplains</h4>
+          <h4><b>Floodplains</b></h4>
           <div id="flood"></div>
 
-          <div>
-            <input id="" type="checkbox">
-            ( Soon! ) 2020s Sea Level Rise 100-yr Floodplain
-          </div>
-
-          <h4><a href="#">What else do you want to see?</a></h4>
+          <h4><b><a href="#">What else do you want to see?</a></b></h4>
 
         </div>
       </div>
