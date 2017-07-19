@@ -51,10 +51,9 @@ $(function() {
       } else {
         getGeoPolygon(layerName);        
       }
-    }  else {
+    } else {
       Remove(layerName);
     }
-    $('.legend').remove();
   }
 
   // Checking if a checkbox gets clicked
