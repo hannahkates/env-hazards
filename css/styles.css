@@ -1,16 +1,14 @@
 #body {
-/*  background-color: #FFFFFF;*/
-  background: #CDD2D4;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to top, #CDD2D4, #ffffff);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to top, #CDD2D4, #ffffff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #E4E8E6;  /* fallback for old browsers */
   font-family: 'Open Sans', sans-serif;
+  color: black;
 }
 
 #header-main {
-  text-align: center;
+  text-align: left;
   font-family: 'Cabin Sketch', cursive;
   font-size: 58px;
-  margin-top: 12px;
+  margin-top: 15px;
   color: black;
 }
 
@@ -33,17 +31,21 @@
   padding-left: 0;
 }
 
-.enter-address {
+/*.enter-address {
   display: flex;
 }
 
 .enter-address input {
   margin-right: .5em;
-}
+}*/
 
 #top-section {
-  height: 80px;
-  width: 100%;  
+  background: #f2f6ff;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #ffffff, #f2f6ff);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #ffffff, #f2f6ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  height: 90px;
+  width: 100%; 
+  padding-left: 29px;
   outline-color: #CDD2D4;
   outline-width: 0.5px;
   outline-style: solid;
@@ -53,6 +55,9 @@
   height: 500px;
   width: 100%;
   display: inline-block;
+  outline-color: #CDD2D4;
+  outline-width: 0.5px;
+  outline-style: solid;
 }
 
 #sidebar {
@@ -60,10 +65,16 @@
   padding-right: 29px;
   padding-left: 29px;
   padding-bottom: 29px;
-  padding-top: 8px;
+  padding-top: 3px;
   height: 500px;
   width: 100%;
   overflow: auto;
+  outline-color: #CDD2D4;
+  outline-width: 0.5px;
+  outline-style: solid;
+  background: #f2f6ff;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #ffffff, #f2f6ff);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #ffffff, #f2f6ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .glyphicon {
@@ -78,7 +89,7 @@
   float: right; 
 }
 
-.info {
+/*.info {
     padding: 6px 8px;
     font: 14px/16px Arial, Helvetica, sans-serif;
     background: white;
@@ -89,9 +100,9 @@
 .info h4 {
     margin: 0 0 5px;
     color: #777;
-}
+}*/
 
-.legend {
+/*.legend {
     line-height: 25px;
     color: black;
 }
@@ -102,4 +113,4 @@
     margin-right: 8px;
     opacity: 0.9;
     border-radius: 25px;
-}
+}*/

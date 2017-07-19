@@ -11,16 +11,33 @@ $(function() {
   loading.hide();
 
   // Instantiating the map object and setting the height based on window height
-  var h = window.innerHeight - 80;
-  $('#mapContainer').css('height',h);
-  $('#sidebar').css('height',h);
+  var topHeight = 90;
+  var h = window.innerHeight - topHeight;
+  $('#mapContainer').css({'height':h});
+  $('#sidebar').css({'height':h});
   var map = L.map('mapContainer').setView([40.729830, -73.961549], 13);
+
+  $( window ).resize(function() {
+    h = window.innerHeight - topHeight;
+    $('#mapContainer').css({'height':h});
+    $('#sidebar').css({'height':h});
+  });
 
   // Adding a light basemap from carto's free basemaps
   L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
     maxZoom: 18,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>'
   }).addTo(map);
+
+  // Change color of info button when hovered over
+  $('.glyphicon-info-sign').hover(
+    function() {
+      $( this ).css({color:'#3B99FC'})
+    },
+    function() {
+      $( this ).css({color:'black'})
+    }
+  )
 
   // Functions to run when a layer checkbox is clicked
   function mapLayerClickFn(e) {
