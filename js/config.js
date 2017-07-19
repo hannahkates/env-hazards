@@ -330,18 +330,3 @@ var layers = {
       </div>`
   }
 }
-
-          // <div>
-          //   <input id="" type="checkbox">
-          //   ( Soon! ) Waste Processing
-          // </div>
-          // <div>
-          //   <input id="" type="checkbox">
-          //   ( Soon! ) Waste Carter Sites
-          // </div>
-          // <div>
-          //   <input id="" type="checkbox">
-          //   ( Soon! ) Waste Transfer Stations
-          // </div>
-
-
