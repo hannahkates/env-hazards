@@ -1,5 +1,5 @@
 #body {
-  background: #E4E8E6;  /* fallback for old browsers */
+  background: #f2fdff;
   font-family: 'Open Sans', sans-serif;
   color: black;
 }
@@ -31,21 +31,13 @@
   padding-left: 0;
 }
 
-/*.enter-address {
-  display: flex;
-}
-
-.enter-address input {
-  margin-right: .5em;
-}*/
-
 #top-section {
-  background: #f2f6ff;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to top, #ffffff, #f2f6ff);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to top, #ffffff, #f2f6ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #f2fdff;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #ffffff, #f2fdff);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #ffffff, #f2fdff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   height: 90px;
   width: 100%; 
-  padding-left: 29px;
+  padding-left: 33px;
   outline-color: #CDD2D4;
   outline-width: 0.5px;
   outline-style: solid;
@@ -62,9 +54,9 @@
 
 #sidebar {
   display: inline-block;
-  padding-right: 29px;
-  padding-left: 29px;
-  padding-bottom: 29px;
+  padding-right: 33px;
+  padding-left: 33px;
+  padding-bottom: 33px;
   padding-top: 3px;
   height: 500px;
   width: 100%;
@@ -72,9 +64,9 @@
   outline-color: #CDD2D4;
   outline-width: 0.5px;
   outline-style: solid;
-  background: #f2f6ff;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #ffffff, #f2f6ff);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #ffffff, #f2f6ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #f2fdff;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #ffffff, #f2fdff);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #ffffff, #f2fdff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .glyphicon {
@@ -88,29 +80,3 @@
 #loading {
   float: right; 
 }
-
-/*.info {
-    padding: 6px 8px;
-    font: 14px/16px Arial, Helvetica, sans-serif;
-    background: white;
-    background: rgba(255,255,255,0.9);
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    border-radius: 5px;
-}
-.info h4 {
-    margin: 0 0 5px;
-    color: #777;
-}*/
-
-/*.legend {
-    line-height: 25px;
-    color: black;
-}
-.legend i {
-    width: 18px;
-    height: 18px;
-    float: left;
-    margin-right: 8px;
-    opacity: 0.9;
-    border-radius: 25px;
-}*/
