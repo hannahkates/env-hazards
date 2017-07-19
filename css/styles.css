@@ -38,6 +38,7 @@
   height: 90px;
   width: 100%; 
   padding-left: 33px;
+  padding-right: 33px;
   outline-color: #CDD2D4;
   outline-width: 0.5px;
   outline-style: solid;
@@ -75,7 +76,6 @@
 
 #github {
   float: right;
-  margin-right: 20px;
 }
 
 #loading {
