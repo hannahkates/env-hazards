@@ -130,7 +130,7 @@ $(function() {
 
     $.getJSON(url, function(sitePoint) {
       layers[layerName].layer = L.geoJson(sitePoint, {
-        style: layers['eDesig'].markerStyle,
+        style: layers[layerName].markerStyle,
         onEachFeature: function(feature, layer) {
           var data = feature.properties;
           // Popup content
