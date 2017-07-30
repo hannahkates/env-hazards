@@ -71,7 +71,7 @@
 }
 
 .glyphicon {
-  float: right; 
+  float: right;
 }
 
 #github {
@@ -80,4 +80,22 @@
 
 #loading {
   float: right; 
+}
+
+.circle {
+    width: 10px;
+    height: 10px;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.square {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    margin-right: 5px;
 }

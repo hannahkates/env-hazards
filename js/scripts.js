@@ -83,6 +83,12 @@ $(function() {
         var marker = data[i];
         var geojsonMarkerOptions  = layers[layerName].markerStyle;
         var point = L.circleMarker( [data[i][lat], data[i][long]], geojsonMarkerOptions ).bindPopup(popupContent);
+        point.on('mouseover', function (e) {
+            this.openPopup();
+        });
+        point.on('mouseout', function (e) {
+            this.closePopup();
+        });
         layers[layerName].layer.addLayer(point);
       }
       layers[layerName].layer.addTo(map);
@@ -114,6 +120,12 @@ $(function() {
           var template = Handlebars.compile(source);
           var popupContent = template(popupData);
           layer.bindPopup(popupContent);
+          layer.on('mouseover', function (e) {
+            this.openPopup();
+          });
+          layer.on('mouseout', function (e) {
+              this.closePopup();
+          });
         }
       })
       layers[layerName].layer.addTo(map);
@@ -142,6 +154,12 @@ $(function() {
           var template = Handlebars.compile(source);
           var popupContent = template(popupData);
           layer.bindPopup(popupContent);
+          layer.on('mouseover', function (e) {
+            this.openPopup();
+          });
+          layer.on('mouseout', function (e) {
+              this.closePopup();
+          });
         }
       })
       layers[layerName].layer.addTo(map);

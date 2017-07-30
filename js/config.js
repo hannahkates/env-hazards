@@ -12,9 +12,6 @@ var layers = {
       opacity: 1,
       fillOpacity: 0.7
     },
-    legendStyle: {
-
-    },
     popupTemplate:
       `<h5>{{street_address}}</h5>
       <h5>Fuel: {{primary_fuel}}</h5>
@@ -29,8 +26,8 @@ var layers = {
     divContent:
       `<div>
         <input type="checkbox" data-layer-name="bldgOil">
-        <span class="circle" style:{background=#f00, width=200px, height=200px, border-radius=50%}></span>
         <span data-toggle="modal" data-target="#bldgOil" class="glyphicon glyphicon-info-sign"></span>
+        <div class="circle" style="background:black;"></div>
         Buildings Burning Fuel Oil #4 and #6
       </div>
       <div class="modal fade" id="bldgOil" role="dialog">
@@ -66,9 +63,6 @@ var layers = {
       opacity: 1,
       fillOpacity: 0.9
     },
-    legendStyle: {
-
-    },
     popupTemplate:
       `<h5>Wastewater Treatment Catchment:</h5>
       <h5>{{facility_name}}</h5>`,
@@ -79,6 +73,7 @@ var layers = {
       `<div>
         <input type="checkbox" data-layer-name="cso">
         <span data-toggle="modal" data-target="#cso" class="glyphicon glyphicon-info-sign"></span>
+        <div class="circle" style="background:#FFA500;"></div>
         Combined Sewer Outfalls
       </div>
       <div class="modal fade" id="cso" role="dialog">
@@ -109,9 +104,6 @@ var layers = {
       weight: 2,
       opacity: 1
     },
-    legendStyle: {
-
-    },
     popupTemplate: 
       `<h5>{{sitename}}</h5>
       <h5>Program: {{program}}</h5>
@@ -126,6 +118,7 @@ var layers = {
       `<div>
         <input type="checkbox" data-layer-name="remediation">
         <span data-toggle="modal" data-target="#remediation" class="glyphicon glyphicon-info-sign"></span>
+        <div class="square" style="background:#1e9974;"></div>
         Remediation Site Boundaries
       </div>
       <div class="modal fade" id="remediation" role="dialog">
@@ -156,9 +149,6 @@ var layers = {
       weight: 2,
       opacity: 1
     },
-    legendStyle: {
-
-    },
     popupTemplate: 
       `<h5>E-Designation Number:</h5>
       <h5>{{EDesigNum}}</h5>`
@@ -170,6 +160,7 @@ var layers = {
       `<div>
         <input type="checkbox" data-layer-name="eDesig">
         <span data-toggle="modal" data-target="#eDesig" class="glyphicon glyphicon-info-sign"></span>
+        <div class="square" style="background:#4f1111;"></div>
         E-Designation Sites
       </div>
       <div class="modal fade" id="eDesig" role="dialog">
@@ -206,9 +197,6 @@ var layers = {
       opacity: 1,
       fillOpacity: .9
     },
-    legendStyle: {
-
-    },
     popupTemplate:
       `<h5>311 Complaint Category:<h5>
       <h5>{{descriptor}}</h5>`,
@@ -219,6 +207,7 @@ var layers = {
       `<div>
         <input type="checkbox" data-layer-name="three">
         <span data-toggle="modal" data-target="#three" class="glyphicon glyphicon-info-sign"></span>
+        <div class="circle" style="background:#9b42f4;"></div>
         Oil and Chemical Spills (NYC 311)
       </div>
       <div class="modal fade" id="three" role="dialog">
@@ -249,9 +238,6 @@ var layers = {
       weight: 2,
       opacity: 1
     },
-    legendStyle: {
-
-    },
     popupTemplate: 
       `<h5>E-Designation Number:</h5>
       <h5>{{floodplainNum}}</h5>`
@@ -263,14 +249,15 @@ var layers = {
       `<div>
         <input type="checkbox" data-layer-name="floodplain">
         <span data-toggle="modal" data-target="#floodplain" class="glyphicon glyphicon-info-sign"></span>
-        Sea Level Rise (2020s 100-yr Floodplain)
+        <div class="square" style="background:#4286f4;"></div>
+        2020 Sea Level Rise 100-yr Flood
       </div>
       <div class="modal fade" id="floodplain" role="dialog">
         <div class="modal-dialog">     
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Sea Level Rise (2020s 100-yr Floodplain)</h4>
+              <h4 class="modal-title">2020 Projected Sea Level Rise 100-yr Floodplain</h4>
             </div>
             <div class="modal-body">
               <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Sandy_West_St_underpass_flooding_CU_7_33PM_140mm-0212_%288158800855%29.jpg" width=100%>
@@ -292,9 +279,6 @@ var layers = {
       opacity: 1,
       fillOpacity: 0.7
     },
-    legendStyle: {
-
-    },
     popupTemplate:
       `<h5>{{facname}}</h5>
       <h5>{{address}}</h5>
@@ -309,7 +293,7 @@ var layers = {
     divContent:
       `<div>
         <input type="checkbox" data-layer-name="solidWaste">
-        <span class="circle" style:{background=#f00, width=200px, height=200px, border-radius=50%}></span>
+        <div class="circle" style="background:#cc470e;"></div>
         <span data-toggle="modal" data-target="#solidWaste" class="glyphicon glyphicon-info-sign"></span>
         Solid Waste Transfer and Processing
       </div>
