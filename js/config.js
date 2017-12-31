@@ -266,8 +266,8 @@ var layers = {
         </div>
       </div>`
   },
-  solidWaste: {
-    url: `https://cartoprod.capitalplanning.nyc/user/cpp/api/v2/sql?q=SELECT * FROM facdb_facilities WHERE facgroup = 'Solid Waste'&format=geojson`,
+  solidTransfer: {
+    url: `https://planninglabs.carto.com/api/v2/sql?q=SELECT * FROM facdb_170522 WHERE facsubgrp = 'Solid Waste Transfer and Carting'&format=geojson`,
     type: 'geo',
     category: 'solid',
     markerType: 'point',
@@ -292,17 +292,64 @@ var layers = {
     },
     divContent:
       `<div>
-        <input type="checkbox" data-layer-name="solidWaste">
+        <input type="checkbox" data-layer-name="solidTransfer">
         <div class="circle" style="background:#cc470e;"></div>
-        <span data-toggle="modal" data-target="#solidWaste" class="glyphicon glyphicon-info-sign"></span>
-        Solid Waste Transfer and Processing
+        <span data-toggle="modal" data-target="#solidTransfer" class="glyphicon glyphicon-info-sign"></span>
+        Solid Waste Transfer and Carting
       </div>
-      <div class="modal fade" id="solidWaste" role="dialog">
+      <div class="modal fade" id="solidTransfer" role="dialog">
         <div class="modal-dialog">         
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Solid Waste Transfer and Processing</h4>
+              <h4 class="modal-title">Solid Waste Transfer and Carting</h4>
+            </div>
+            <div class="modal-body">
+              <img src="https://c2.staticflickr.com/4/3133/2722868111_180e32d2c8_z.jpg?zz=1" width='100%'>
+              <p><i><a href="https://c2.staticflickr.com/4/3133/2722868111_180e32d2c8_z.jpg?zz=1">Credit</a></i></p>
+              <p><b>Data Source</b>: <a href="https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-selfac.page">NYC Facilities Database (NYC Dept of City Planning)</a></b><br><b>Date of Last Update</b>: May 2017. </p>
+            </div>
+          </div>     
+        </div>
+      </div>`
+  },
+  solidProcessing: {
+    url: `https://planninglabs.carto.com/api/v2/sql?q=SELECT * FROM facdb_170522 WHERE facsubgrp = 'Solid Waste Processing'&format=geojson`,
+    type: 'geo',
+    category: 'solid',
+    markerType: 'point',
+    markerStyle: {
+      radius: 4,
+      fillColor: '#722e14',
+      color: "#000",
+      weight: 1,
+      opacity: 1,
+      fillOpacity: 0.7
+    },
+    popupTemplate:
+      `<h5>{{facname}}</h5>
+      <h5>{{address}}</h5>
+      <h5>Facility Category: {{facsubgrp}}</h5>
+      <h5>Operator: {{opname}}</h5>`,
+    popupFields: {
+      facname: 'facname',
+      address: 'address',
+      facsubgrp: 'facsubgrp',
+      opname: 'opname'
+    },
+    divContent:
+      `<div>
+        <input type="checkbox" data-layer-name="solidProcessing">
+        <div class="circle" style="background:#722e14;"></div>
+        <span data-toggle="modal" data-target="#solidProcessing" class="glyphicon glyphicon-info-sign"></span>
+        Solid Waste Processing
+      </div>
+      <div class="modal fade" id="solidProcessing" role="dialog">
+        <div class="modal-dialog">         
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Solid Waste Processing</h4>
             </div>
             <div class="modal-body">
               <img src="https://c2.staticflickr.com/4/3133/2722868111_180e32d2c8_z.jpg?zz=1" width='100%'>
