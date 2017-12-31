@@ -1,6 +1,6 @@
 var layers = {
-  bldgOil: {
-    url: 'https://hbk254.carto.com/api/v2/sql?q=SELECT * FROM clean_heat_data&format=geojson',
+  bldgOil6: {
+    url: `https://hbk254.carto.com/api/v2/sql?q=SELECT * FROM clean_heat_data WHERE RIGHT(primary_fuel,1) = '6'&format=geojson`,
     type: 'geo',
     category: 'air',
     markerType: 'point',
@@ -25,17 +25,66 @@ var layers = {
     },
     divContent:
       `<div>
-        <input type="checkbox" data-layer-name="bldgOil">
-        <span data-toggle="modal" data-target="#bldgOil" class="glyphicon glyphicon-info-sign"></span>
+        <input type="checkbox" data-layer-name="bldgOil6">
+        <span data-toggle="modal" data-target="#bldgOil6" class="glyphicon glyphicon-info-sign"></span>
         <div class="circle" style="background:black;"></div>
-        Buildings Burning Fuel Oil #4 and #6
+        Buildings Burning Fuel Oil #6
       </div>
-      <div class="modal fade" id="bldgOil" role="dialog">
+      <div class="modal fade" id="bldgOil6" role="dialog">
         <div class="modal-dialog">            
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Buildings Burning Fuel Oil #4 and #6</h4>
+              <h4 class="modal-title">Buildings Burning Fuel Oil #6</h4>
+            </div>
+            <div class="modal-body">
+              <img src="https://raw.githubusercontent.com/hannahkates/env-hazards/master/img/spotthesoot.jpg" width='100%'>
+              <p><i>View of 26 Broadway in Manhattan, the <a href="https://en.wikipedia.org/wiki/26_Broadway">Standard Oil Building</a></i></p>
+              <p>"New Yorkers burn more than 1 billion gallons of heating oil every year which accounts for nearly 14% of fine particulate matter pollutants emitted into our air; <b>more PM2.5 emissions than all cars and trucks in the city combined</b>. This particulate matter contains many pollutants that are associated with respiratory and cardiac diseases."<br>- <a href="http://www.nyc.gov/html/dep/html/air/buildings_heating_oil.shtml">NYC Dept. of Environmental Protection</a><p>
+              <p>This dataset provideds a comprehensive list of all buildings that still burn heavy heating oil. Any building burning #6 oil is in violation of NYC <a href="http://www.nyc.gov/html/dep/pdf/air/ll43.pdf">Local Law 43</a>.</p>
+              <p><b>Data Source</b>: <a href="https://www.nyccleanheat.org/spot-the-soot">NYC Retrofit Accelerator</a></b><br><b>Date of Last Update</b>: November 2015. </p>
+            </div>
+          </div>     
+        </div>
+      </div>`
+  },
+  bldgOil4: {
+    url: `https://hbk254.carto.com/api/v2/sql?q=SELECT * FROM clean_heat_data WHERE RIGHT(primary_fuel,1) = '4'&format=geojson`,
+    type: 'geo',
+    category: 'air',
+    markerType: 'point',
+    markerStyle: {
+      radius: 4,
+      fillColor: '#696969',
+      color: "#000",
+      weight: 1,
+      opacity: 1,
+      fillOpacity: 0.7
+    },
+    popupTemplate:
+      `<h5>{{street_address}}</h5>
+      <h5>Fuel: {{primary_fuel}}</h5>
+      <h5>Estimated Retirement Year: {{est_retirement_year}} </h5>
+      <h5>Owner: {{owner}}</h5>`,
+    popupFields: {
+      street_address: 'street_address',
+      primary_fuel: 'primary_fuel',
+      est_retirement_year: 'est_retirement_year',
+      owner: 'owner'
+    },
+    divContent:
+      `<div>
+        <input type="checkbox" data-layer-name="bldgOil4">
+        <span data-toggle="modal" data-target="#bldgOil4" class="glyphicon glyphicon-info-sign"></span>
+        <div class="circle" style="background:#696969;"></div>
+        Buildings Burning Fuel Oil #4
+      </div>
+      <div class="modal fade" id="bldgOil4" role="dialog">
+        <div class="modal-dialog">            
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Buildings Burning Fuel Oil #4</h4>
             </div>
             <div class="modal-body">
               <img src="https://raw.githubusercontent.com/hannahkates/env-hazards/master/img/spotthesoot.jpg" width='100%'>
