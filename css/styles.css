@@ -32,9 +32,9 @@
 }
 
 #top-section {
-  background: #f2fdff;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to top, #ffffff, #f2fdff);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to top, #ffffff, #f2fdff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: 'https://raw.githubusercontent.com/hannahkates/env-hazards/master/img/subtle_white_feathers.png';  /* fallback for old browsers */
+  /*background: -webkit-linear-gradient(to top, #ffffff, #f2fdff);  /* Chrome 10-25, Safari 5.1-6 */*/
+  /*background: linear-gradient(to top, #ffffff, #f2fdff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   height: 90px;
   width: 100%; 
   padding-left: 33px;
