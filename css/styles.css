@@ -1,14 +1,19 @@
 #body {
-  background: #D1D5D7;
+  background: #f2fdff;
   font-family: 'Open Sans', sans-serif;
   color: black;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 #header-main {
   text-align: left;
   font-family: 'Cabin Sketch', cursive;
-  font-size: 50px;
+  font-size: 52px;
+  margin-left: 33px;
+  margin-right: 33px;
   margin-top: 20px;
+  margin-bottom: 0px;
   color: black;
 }
 
@@ -20,54 +25,53 @@
 
 .header-layers {
   font-family: 'Cabin Sketch', cursive;
-  font-size: 32px;
+  font-size: 36px;
   color: black;
   margin-top: 18px;
-  margin-bottom: 10px;
+  margin-bottom: 18px;
 }
 
 .row.no-gutter > [class*='col-'] {
-  padding-right: 0;
-  padding-left: 0;
+  padding-right: 0px;
+  padding-left: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 #top-section {
-  background: 'https://raw.githubusercontent.com/hannahkates/env-hazards/master/img/subtle_white_feathers.png';  /* fallback for old browsers */
-  /*background: -webkit-linear-gradient(to top, #ffffff, #f2fdff);  /* Chrome 10-25, Safari 5.1-6 */*/
+  /*background: -webkit-linear-gradient(to top, #ffffff, #f2fdff);  /* Chrome 10-25, Safari 5.1-6 */
   /*background: linear-gradient(to top, #ffffff, #f2fdff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   height: 90px;
-  width: 100%; 
-  padding-left: 33px;
-  padding-right: 33px;
-  outline-color: #CDD2D4;
-  outline-width: 0.5px;
-  outline-style: solid;
+  width: 100%;
+  padding-right: 0px;
+  padding-left: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 #mapContainer {
-  height: 500px;
+  height: 100%;
   width: 100%;
   display: inline-block;
   outline-color: #CDD2D4;
-  outline-width: 0.5px;
+  outline-width: 3px;
   outline-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 #sidebar {
   display: inline-block;
   padding-right: 33px;
   padding-left: 33px;
-  padding-bottom: 33px;
-  padding-top: 3px;
-  height: 500px;
-  width: 100%;
+  padding-top: 0px;
+  padding-bottom: 0px;
   overflow: auto;
   outline-color: #CDD2D4;
-  outline-width: 0.5px;
+  outline-width: 3px;
   outline-style: solid;
-  background: #f2fdff;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #ffffff, #f2fdff);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #ffffff, #f2fdff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  /*background: -webkit-linear-gradient(to bottom, #ffffff, #f2fdff);  /* Chrome 10-25, Safari 5.1-6 */
+  /*background: linear-gradient(to bottom, #ffffff, #f2fdff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .glyphicon {

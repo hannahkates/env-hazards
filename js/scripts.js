@@ -12,7 +12,7 @@ $(function() {
 
   // Instantiating the map object and setting the height based on window height
   var topHeight = 90;
-  var h = window.innerHeight - topHeight;
+  var h = window.innerHeight - topHeight - 5;
   $('#mapContainer').css({'height':h});
   $('#sidebar').css({'height':h});
   var map = L.map('mapContainer').setView([40.729830, -73.961549], 13);
