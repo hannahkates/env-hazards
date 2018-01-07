@@ -278,7 +278,7 @@ var layers = {
       </div>`
   },
   floodplain: {
-    url: 'https://data.cityofnewyork.us/resource/inra-wqx3.geojson',
+    url: 'https://planninglabs.carto.com/api/v2/sql?q=SELECT * FROM support_waterfront_pfirm15&format=geojson',
     type: 'geo',
     category: 'flood',
     markerType: 'polygon',
@@ -288,25 +288,25 @@ var layers = {
       opacity: 1
     },
     popupTemplate: 
-      `<h5>E-Designation Number:</h5>
-      <h5>{{floodplainNum}}</h5>`
+      `<h5>FEMA Flood Zone Category:</h5>
+      <h5>{{fld_zone}}</h5>`
     ,
     popupFields: {
-      floodplainNum: 'floodplainNum'
+      floodplainNum: 'fld_zone'
     },
     divContent:
       `<div>
         <input type="checkbox" data-layer-name="floodplain">
         <span data-toggle="modal" data-target="#floodplain" class="glyphicon glyphicon-info-sign"></span>
         <div class="square" style="background:#4286f4;"></div>
-        2020 Sea Level Rise 100-yr Flood
+        Prelim. FEMA Flood Insurance Boundaries 2015
       </div>
       <div class="modal fade" id="floodplain" role="dialog">
         <div class="modal-dialog">     
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">2020 Projected Sea Level Rise 100-yr Floodplain</h4>
+              <h4 class="modal-title">Preliminary FEMA Flood Insurance Rate Maps 2015</h4>
             </div>
             <div class="modal-body">
               <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Sandy_West_St_underpass_flooding_CU_7_33PM_140mm-0212_%288158800855%29.jpg" width=100%>
