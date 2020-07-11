@@ -1,4 +1,4 @@
-import urllib, json 
+import urllib.request, json 
 
 # test url with data
 url = "https://hbk254.carto.com/api/v2/sql?q=SELECT * FROM clean_heat_data WHERE RIGHT(primary_fuel,1) = '6'&format=geojson"
@@ -10,7 +10,7 @@ url = "https://hbk254.carto.com/api/v2/sql?q=SELECT * FROM clean_heat_data WHERE
 # url = "https://planninglabs.carto.com/api/v2/sql?q=SELECT * FROM facdb_170522 WHERE facsubgrp = 'Solid Waste Transfer and Carting'&format=geojson"
 
 def check_if_data_source_works(url):
-	response = urllib.urlopen(url)
+	response = urllib.request.urlopen(url)
 	data = json.loads(response.read())
 	# The run should fail if the json object is empty (length == 0). 
 	# That's why 1 is being divided by the length of the json object

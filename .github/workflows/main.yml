@@ -28,7 +28,7 @@ jobs:
           python-version: '3.x' #install the python needed
       - name: execute py script # run the run.py to get the latest data
         run: |
-          pip install urllib
+          pip install urllib3
           pip install json
           python ./.github/workflows/check-data-sources.py
       #   env:
