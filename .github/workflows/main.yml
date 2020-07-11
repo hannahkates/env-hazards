@@ -5,11 +5,8 @@ name: Data Sources Check
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 
-on: push
-
-# on:
-#   schedule:
-#   - cron: "*/1 * * * *"
+on:
+  push
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -30,7 +27,3 @@ jobs:
         run: |
           pip install urllib3
           python ./.github/workflows/check-data-sources.py
-      #   env:
-      #     key: ${{ secrets.key }} # if run.py requires passwords..etc, set it as secrets
-      # - name: export index
-      #   .... # use crosponding script or actions to help export.
