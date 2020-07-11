@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Test of Python Script
+name: Data Sources Check
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -25,9 +25,11 @@ jobs:
       - name: setup python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8 #install the python needed
+          python-version: 2.7 #install the python needed
       - name: execute py script # run the run.py to get the latest data
         run: |
+          pip install urllib
+          pip install json
           python ./.github/workflows/check-data-sources.py
       #   env:
       #     key: ${{ secrets.key }} # if run.py requires passwords..etc, set it as secrets
