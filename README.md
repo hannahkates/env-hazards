@@ -1,3 +1,5 @@
+![Test of Python Script](https://github.com/hannahkates/env-hazards/workflows/Test%20of%20Python%20Script/badge.svg)
+
 ## Environmental Hazards in NYC
 
 Please note this test project is a work in progress and is not a NYC Planning product.
