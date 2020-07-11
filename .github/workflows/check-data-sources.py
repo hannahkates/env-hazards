@@ -1,7 +1,7 @@
 import urllib.request, json 
 
 # test url with data
-url = "https://hbk254.carto.com/api/v2/sql?q=SELECT * FROM clean_heat_data WHERE RIGHT(primary_fuel,1) = '6'&format=geojson"
+url = "https://hbk254.carto.com/api/v2/sql?q=SELECT%20*%20FROM%20clean_heat_data%20WHERE%20RIGHT(primary_fuel,1)%20=%20'6'&format=geojson"
 
 # test url with zero records
 # url = "https://services5.arcgis.com/GfwWNkhOj9bNBqoJ/arcgis/rest/services/MAPPLUTO/FeatureServer/0/query?where=EDesigNum%20IS%20NOT%20NULL&outFields=Address,EDesigNum&outSR=4326&f=geojson#features/3/properties"
